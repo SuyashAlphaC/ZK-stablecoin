@@ -23,7 +23,15 @@ fn main(total_dsc_minted: pub Field, collateral_value_in_usd: pub Field) {
 
 #[test]
 fn test_main() {
-    let total_dsc_minted = 101 * 1_000_000_000_000_000_000;
+    let total_dsc_minted = 100 * 1_000_000_000_000_000_000;
+    let collateral_value_in_usd = 200_000_000_000_000_000_000;
+
+    main(total_dsc_minted, collateral_value_in_usd);
+}
+
+#[test]
+fn test_main2() {
+    let total_dsc_minted = 0;
     let collateral_value_in_usd = 200_000_000_000_000_000_000;
 
     main(total_dsc_minted, collateral_value_in_usd);
