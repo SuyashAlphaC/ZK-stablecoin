@@ -64,3 +64,28 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+ [0x00000000000000000000000000000000000000000000021e19e0c9bab2400000, 0x00000000000000000000000000000000000000000000043c33c1937564800000]
+
+10000000000000000000000
+20000
+
+
+     modifier depositedCollateral() {
+        vm.startPrank(user);
+        ERC20Mock(weth).approve(address(engine), amountCollateral);
+        engine.depositCollateral(weth, amountCollateral);
+        vm.stopPrank();
+        _;
+    }
+
+    function testCanDepositCollateralWithoutMinting() public depositedCollateral {
+        uint256 userBalance = dsc.balanceOf(user);
+        assertEq(userBalance, 0);
+    }
+
+    function testCanDepositedCollateralAndGetAccountInfo() public depositedCollateral {
+        (uint256 totalDscMinted, uint256 collateralValueInUsd) = engine.getAccountInformation(user);
+        uint256 expectedDepositedAmount = engine.getTokenAmountFromUsd(weth, collateralValueInUsd);
+        assertEq(totalDscMinted, 0);
+        assertEq(expectedDepositedAmount, amountCollateral);
+    }
