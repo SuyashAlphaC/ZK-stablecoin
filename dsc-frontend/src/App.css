@@ -1,0 +1,87 @@
+/* src/App.css */
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.card {
+  background-color: #3a3f4a;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.info-grid span:nth-child(odd) {
+  font-weight: bold;
+}
+
+.refresh-button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  background-color: #4a4f5a;
+  color: white;
+  border: 1px solid #61dafb;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #aaa;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  background-color: #282c34;
+  border: 1px solid #555;
+  color: white;
+  border-radius: 5px;
+  box-sizing: border-box; /* Important for padding */
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.health-factor {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #24283b;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}

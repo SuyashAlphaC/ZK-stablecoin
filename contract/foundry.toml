@@ -6,6 +6,8 @@ remappings = [
     '@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/',
     '@openzeppelin/contracts=lib/openzeppelin-contracts/contracts',
 ]
+optimizer= true
+optimizer_runs= 200
 ffi = true
 [etherscan]
 mainnet = { key = "${ETHERSCAN_API_KEY}" }

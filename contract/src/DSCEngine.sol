@@ -286,7 +286,7 @@ contract DSCEngine is ReentrancyGuard {
      * without a preceding ZK proof verification. The health factor check is handled off-chain and verified by the ZK proof.
      * @param amountDscToMint The amount of DSC to mint.
      */
-    function mintDscWithZK(uint256 amountDscToMint) public moreThanZero(amountDscToMint) nonReentrant {
+    function mintDscWithZK(uint256 amountDscToMint) internal moreThanZero(amountDscToMint) nonReentrant {
         s_DSCMinted[msg.sender] += amountDscToMint;
         bool minted = i_dsc.mint(msg.sender, amountDscToMint);
         if (!minted) {
@@ -304,7 +304,7 @@ contract DSCEngine is ReentrancyGuard {
     function depositCollateral(
         address tokenCollateralAddress,
         uint256 amountCollateral
-    ) public moreThanZero(amountCollateral) nonReentrant isAllowedToken(tokenCollateralAddress) {
+    ) internal moreThanZero(amountCollateral) nonReentrant isAllowedToken(tokenCollateralAddress) {
         s_collateralDeposited[msg.sender][tokenCollateralAddress] += amountCollateral;
         emit CollateralDeposited(msg.sender, tokenCollateralAddress, amountCollateral);
         bool success = IERC20(tokenCollateralAddress).transferFrom(msg.sender, address(this), amountCollateral);
